@@ -1,0 +1,69 @@
+<html>
+</head>
+	<title>Form Validation using Jasmine-Jquery</title>
+	<script type="text/javascript">
+    
+    function validatePassword(newPassword)
+	{
+	    var len = newPassword.length,
+	        passwordIndicator = $('.password-strength');
+
+	    if (len == 0){
+	        passwordIndicator.text('Please do not leave the password field empty!')
+	    }
+	    else if (len < 6) {
+	        passwordIndicator.text('Password too short. Enter atleast 6 characters');
+	    }
+	    else {
+        	passwordIndicator.text('');   
+    	}
+	}
+
+	function validateInput(newInput)
+	{
+	    var len = newInput.length;
+	    numberIndicator = $('.validate-number');
+
+	    if(len == 0) {
+	        numberIndicator.text('Please do not leave the input number field empty');
+	    }
+
+	    if(isNaN(newInput)) {
+	        numberIndicator.text('Incorrect Input. Please enter a valid number');
+	    }
+	    else {
+        	numberIndicator.text('');   
+    	}
+	}
+
+
+    function validate()
+	{
+	    validatePassword($('.passwordTextField').val());
+	    validateInput($('.numberTextField').val())
+	}
+
+
+    </script>
+    <script type="text/javascript" src="./lib/jquery.js"></script>
+</head>
+<body>
+	<h2> Submit the form below </h2> 
+	<div class="password-strength"></div>    
+	<br/>            
+	<div class="validate-number"></div>      
+	<br/>
+	<label>* Enter Your Password : </label>        
+	<input type="text" class="passwordTextField">        
+	<br/>
+	<label>* Enter Any number :</label>        
+	<input type="text" class="numberTextField">      
+	<br/>        
+	<br/>        
+	<br/>        
+	<button class="validate" onclick=validate()>Validate</button>         
+</body>
+</html>
+
+
+
